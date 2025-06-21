@@ -2,11 +2,15 @@ import { WebSocketServer, WebSocket } from "ws";
 import { subscriber } from "./redis";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_!2J#lR8vKm$5xZ7pD9c@";
+import express from "express";
+import http from "http";
+const app = express();
+const server = http.createServer(app);
 
 const clients = new Map<string, WebSocket>();
 
 export const setupWebSocketServer = () => {
-    const wss = new WebSocketServer({ port: 8080 });
+    const wss = new WebSocketServer({ server });
 
     wss.on("connection", (ws, req) => {
         const token = req.url?.split("?token=")[1];

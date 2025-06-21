@@ -38,7 +38,7 @@ const pool = require("./db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const PORT = process.env.PORT || 3001;
-const allowedOrigin = process.env.CLIENT_URL || "bookworm-kr56.vercel.app";
+const allowedOrigin = process.env.CLIENT_URL || "https://bookworm-kr56.vercel.app";
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_!2J#lR8vKm$5xZ7pD9c@";
 setupWebSocketServer();
 

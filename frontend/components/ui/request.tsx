@@ -66,9 +66,9 @@ export function Request({
     <Card className="bg-bone rounded-xl p-4 w-full min-w-2xl flex justify-between shadow-md mb-5">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center">
-          {imageUrl ? (
+          {imageUrl && imageUrl !== "" ? (
             <img
-              src={imageUrl}
+              src={`${process.env.NEXT_PUBLIC_API_URL}${imageUrl}`}
               alt="profile picture"
               className="h-48 w-32 object-cover rounded-md border border-gray-300 mr-10"
             ></img>

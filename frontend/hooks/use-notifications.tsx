@@ -11,7 +11,7 @@ export function useNotifications() {
 
     //const socket = new WebSocket(`ws://localhost:8080?token=${token}`);
     const socket = new WebSocket(
-      `wss://bookworm-uahr.onrender.com:10000?token=${token}`
+      `wss://bookworm-uahr.onrender.com?token=${token}`
     );
 
     socket.onopen = () => {

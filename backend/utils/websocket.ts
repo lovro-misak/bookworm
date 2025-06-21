@@ -44,6 +44,14 @@ export const setupWebSocketServer = (server: any) => {
         
     });
 
+    wss.on('listening', () => {
+        console.log('WebSocket server listening');
+    });
+
+    wss.on('error', (error) => {
+        console.error('WebSocket server error:', error);
+    });
+
     /*subscriber.psubscribe("notify:*", (err) => {
         if (err) {
             console.error("Redis psubscribe error: ", err);

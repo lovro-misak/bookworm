@@ -6,6 +6,7 @@ import requestRoute from "./routes/request";
 import subsRoute from "./routes/subs";
 import path from "path";
 import { setupWebSocketServer } from "./utils/websocket";
+import http from "http";
 //import { subscriber } from "./utils/redis";
 /*const nodemailer = require('nodemailer');
 
@@ -40,7 +41,12 @@ const saltRounds = 10;
 const PORT = process.env.PORT || 3001;
 const allowedOrigin = process.env.CLIENT_URL || "https://bookworm-kr56.vercel.app";
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_!2J#lR8vKm$5xZ7pD9c@";
-setupWebSocketServer();
+
+const server = http.createServer(app);
+setupWebSocketServer(server);
+server.listen(PORT, () => {
+    console.log(`HTTP server running on port:${PORT}`);
+});
 
 app.use(express.json());
 app.use(cors({ origin: allowedOrigin}));
